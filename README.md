@@ -45,45 +45,26 @@ Tutti ereditano da:
 
 ## 🏛️ Struttura package
 
-src/
-
-├── model/
-
-│   ├── Citta.java
-
-│   ├── Edificio.java
-
-│   ├── Casa.java
-
-│   ├── Fabbrica.java
-
-│   ├── Centrale.java
-
-│   ├── Evento.java
-
-│   ├── Incendio.java
-
-│   ├── BoomEconomico.java
-
-│   ├── Blackout.java
-
-│   ├── Produttore.java
-
-│   ├── Consumatore.java
-
-│   └── TipoEdificio.java
-
-│
-
-├── service/
-
-│   └── Simulatore.java
-
-│
-
-└── main/
-
-    └── Main.java
+    src/
+    ├── model/
+    │   ├── Citta.java
+    │   ├── Edificio.java
+    │   ├── Casa.java
+    │   ├── Fabbrica.java
+    │   ├── Centrale.java
+    │   ├── Evento.java
+    │   ├── Incendio.java
+    │   ├── BoomEconomico.java
+    │   ├── Blackout.java
+    │   ├── Produttore.java
+    │   ├── Consumatore.java
+    │   └── TipoEdificio.java
+    │
+    ├── service/
+    │   └── Simulatore.java
+    │
+    └── main/
+        └── Main.java
 
 ---
 
@@ -91,17 +72,12 @@ src/
 
 ===== SIM CITY =====
 
-Costruisci edificio
-
-Visualizza città
-
-Simula giorno
-
-Statistiche
-
-Demolisci edificio
-
-Esci
+    Costruisci edificio
+    Visualizza città
+    Simula giorno
+    Statistiche
+    Demolisci edificio
+    Esci
 
 ---
 
