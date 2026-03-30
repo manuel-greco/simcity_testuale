@@ -45,8 +45,6 @@ Tutti ereditano da:
 
 ## 🏛️ Struttura package
 
-``
-
 src/
 ├── model/
 │   ├── Citta.java
@@ -66,8 +64,7 @@ src/
 │   └── Simulatore.java
 │
 └── main/
-└── Main.java
-
+    └── Main.java
 
 ---
 
@@ -82,63 +79,14 @@ Statistiche
 Demolisci edificio
 Esci
 
-
 ---
 
 ## ⚙️ Logica di simulazione
 
 Ogni giorno:
 
-1. Ogni edificio applica il suo effetto  
-2. I consumi vengono detratti  
-3. Gli eventi vengono verificati  
-4. La città aggiorna felicità, inquinamento e risorse  
-5. Il giorno avanza  
-
-Esempio:
-
-```java
-public void simulaGiorno() {
-    for (Edificio e : edifici) {
-        e.effetto(this);
-    }
-
-    applicaEventi();
-    giorno++;
-}
-
-📊 Attributi della città
-La classe Citta gestisce:
-
-popolazione
-soldi
-energia
-felicità
-inquinamento
-giorno corrente
-lista edifici
-
-Rappresenta il cuore della simulazione.
-
-🤓 Concetti OOP dimostrati
-✔ Ereditarietà
-Edifici ed eventi usano classi astratte.
-✔ Polimorfismo
-effetto() applicato a oggetti diversi → comportamenti diversi.
-✔ Interfacce
-Produttore e Consumatore.
-✔ Aggregazione
-Citta contiene un ArrayList<Edificio>.
-✔ Incapsulamento
-Attributi privati + getter/setter.
-✔ Enum
-TipoEdificio migliora leggibilità e sicurezza del codice.
-
-🌟 Estensioni possibili (per arrivare al 10)
-
-Salvataggio/caricamento da file
-Nuovi edifici: Ospedale, Scuola, Parco
-Mappa ASCII
-Sistema tasse
-Livelli di difficoltà
-Ordinamento statistiche avanzato
+1. Ogni edificio applica il suo effetto
+2. I consumi vengono detratti
+3. Gli eventi vengono verificati
+4. La città aggiorna felicità, inquinamento e risorse 
+5. Il giorno avanza
