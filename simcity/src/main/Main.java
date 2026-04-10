@@ -4,7 +4,7 @@ import service.Simulatore;
 
 public class Main {
     public static void main(String[] args) {
-        Simulatore sim = new Simulatore();
-        sim.avvia();
+        Simulatore simulatore = new Simulatore();
+        simulatore.avvia();
     }
 }
