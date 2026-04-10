@@ -91,6 +91,10 @@ public class Simulatore {
         System.out.println("1. Costruisci casa (100$)");
         System.out.println("2. Costruisci Fabbrica (200$)");
         System.out.println("3. Costruisci Centrale (300$)");
+        System.out.println("4. Costruisci Parco (80$)");
+        System.out.println("5. Costruisci Ospedale (250$)");
+        System.out.println("6. Costruisci Scuola (150$)");
+        System.out.println("7. Costruisci Centro Commerciale (180$)");
         System.out.println("Inserisci la tua scelta: ");
 
         int scelta;
@@ -106,6 +110,10 @@ public class Simulatore {
             case 1 -> new Casa();
             case 2 -> new Fabbrica();
             case 3 -> new Centrale();
+            case 4 -> new Parco();
+            case 5 -> new Ospedale();
+            case 6 -> new Scuola();
+            case 7 -> new CentroCommerciale();
             default -> null;
         };
 

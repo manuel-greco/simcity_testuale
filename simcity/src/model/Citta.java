@@ -7,6 +7,10 @@ public class Citta {
     private int popolazione;
     private int soldi;
     private int energia;
+    private int felicita = 50;
+    private int inquinamento = 0;
+    private int crescitaGiornaliera = 1;
+
 
     private ArrayList<Edificio> edifici;
 
@@ -27,6 +31,7 @@ public class Citta {
             e.effetto(this);
         }
         energia -= popolazione * 2;
+        popolazione += crescitaGiornaliera;
     }
 
     // GETTER e SETTER
@@ -54,6 +59,30 @@ public class Citta {
     public void setEnergia(int energia) {
         if (energia < 0) energia = 0;
         this.energia = energia;
+    }
+
+    public int getFelicita() {
+        return felicita;
+    }
+
+    public void setFelicita(int f) {
+        felicita = Math.max(0, Math.min(100, f));
+    }
+
+    public int getInquinamento() {
+        return inquinamento;
+    }
+
+    public void setInquinamento(int i) {
+        inquinamento = Math.max(0, i);
+    }
+
+    public int getCrescitaGiornaliera() {
+        return crescitaGiornaliera;
+    }
+
+    public void setCrescitaGiornaliera(int c) {
+        crescitaGiornaliera = c;
     }
 
     public ArrayList<Edificio> getEdifici() {
