@@ -1,6 +1,8 @@
 package service;
 
 import model.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Simulatore {
@@ -51,6 +53,10 @@ public class Simulatore {
                     mostraStatisticheAvanzate();
                     break;
 
+                case 6:
+                    ordinaPercosto();
+                    break;
+
                 case 0:
                     System.out.println("👋 Uscita dal gioco...");
                     break;
@@ -70,6 +76,7 @@ public class Simulatore {
         System.out.println("3. Simula giorno");
         System.out.println("4. Mostra edifici");
         System.out.println("5. Mostra statistiche avanzate");
+        System.out.println("6. Ordina edifici per costo");
         System.out.println("0. Esci");
         System.out.println("Inserisci la tua scelta: ");
     }
@@ -171,6 +178,22 @@ public class Simulatore {
             }
         }
         System.out.println("Edificio più comune: " + comune);
+    }
+
+    private void ordinaPercosto(){
+        ArrayList<Edificio> lista = citta.getEdifici();
+
+        for (int i = 0; i < lista.size() -1; i++) {
+            for (int j = i + 1; j < lista.size(); j++) {
+                if (lista.get(i).getCosto() > lista.get(j).getCosto()){
+                    Edificio scambio = lista.get(i);
+                    lista.set(i, lista.get(j));
+                    lista.set(j, scambio);
+                }
+
+            }
+        }
+        System.out.println("Edifici ordinati per costo!");
     }
 
 
