@@ -9,5 +9,7 @@ public class Fabbrica extends Edificio {
     @Override
     public void effetto(Citta citta) {
         citta.setSoldi(citta.getSoldi() + 20);
+        citta.setInquinamento(citta.getInquinamento() + 2);
+
     }
 }

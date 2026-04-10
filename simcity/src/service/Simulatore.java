@@ -42,7 +42,7 @@ public class Simulatore {
 
                 case 3:
                     citta.simulaGiorno();
-                    System.out.println("➡️ Giorno simulato!");
+                    System.out.println("Giorno simulato!");
                     break;
 
                 case 4:
@@ -59,6 +59,10 @@ public class Simulatore {
 
                 case 7:
                     ordinaPerTipo();
+                    break;
+
+                case 8:
+                    mostraQualitaAria();
                     break;
 
                 case 0:
@@ -82,6 +86,7 @@ public class Simulatore {
         System.out.println("5. Mostra statistiche avanzate");
         System.out.println("6. Ordina edifici per costo");
         System.out.println("7. Ordina edifici per tipo");
+        System.out.println("8. Mostra qualità dell’aria");
         System.out.println("0. Esci");
         System.out.println("Inserisci la tua scelta: ");
     }
@@ -191,6 +196,7 @@ public class Simulatore {
             }
         }
         System.out.println("Edificio più comune: " + comune);
+        System.out.println("Inquinamento: " + citta.getInquinamento() + "/100");
     }
 
     private void ordinaPercosto(){
@@ -230,6 +236,15 @@ public class Simulatore {
         System.out.println("Edifici ordinati per tipo!");
     }
 
+    private void mostraQualitaAria() {
+        int inq = citta.getInquinamento();
 
+        System.out.println("--- Qualità dell'aria ---");
+        System.out.println("Inquinamento: " + inq + "/100");
 
+        if (inq < 30) System.out.println("Aria pulita");
+        else if (inq < 60) System.out.println("Qualità accettabile");
+        else if (inq < 80) System.out.println("Aria inquinata");
+        else System.out.println("Aria pericolosa!");
+    }
 }

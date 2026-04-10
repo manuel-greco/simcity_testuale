@@ -9,5 +9,6 @@ public class Centrale extends Edificio {
     @Override
     public void effetto(Citta citta) {
         citta.setEnergia(citta.getEnergia() + 30);
+        citta.setInquinamento(citta.getInquinamento() + 3);
     }
 }

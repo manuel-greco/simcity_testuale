@@ -8,8 +8,8 @@ public class Citta {
     private int soldi;
     private int energia;
     private int felicita = 50;
-    private int inquinamento = 0;
     private int crescitaGiornaliera = 1;
+    private int inquinamento = 0;
 
 
     private ArrayList<Edificio> edifici;
@@ -32,6 +32,23 @@ public class Citta {
         }
         energia -= popolazione * 2;
         popolazione += crescitaGiornaliera;
+        if (inquinamento > 70) {
+            popolazione -= 3;
+            felicita -= 2;
+        }
+
+        if (inquinamento > 90) {
+            popolazione -= 5;
+            felicita -= 5;
+        }
+        if (inquinamento > 70) {
+            System.out.println("Inquinamento elevato! La popolazione soffre");
+        }
+
+        if (inquinamento > 90) {
+            System.out.println("Livelli critici di inquinamento!");
+        }
+
     }
 
     // GETTER e SETTER
@@ -69,20 +86,22 @@ public class Citta {
         felicita = Math.max(0, Math.min(100, f));
     }
 
-    public int getInquinamento() {
-        return inquinamento;
-    }
-
-    public void setInquinamento(int i) {
-        inquinamento = Math.max(0, i);
-    }
-
     public int getCrescitaGiornaliera() {
         return crescitaGiornaliera;
     }
 
     public void setCrescitaGiornaliera(int c) {
         crescitaGiornaliera = c;
+    }
+
+    public int getInquinamento() {
+        return inquinamento;
+    }
+
+    public void setInquinamento(int inq) {
+        if (inq < 0) inq = 0;
+        if (inq > 100) inq = 100;
+        this.inquinamento = inq;
     }
 
     public ArrayList<Edificio> getEdifici() {
