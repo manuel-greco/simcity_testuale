@@ -57,6 +57,10 @@ public class Simulatore {
                     ordinaPercosto();
                     break;
 
+                case 7:
+                    ordinaPerTipo();
+                    break;
+
                 case 0:
                     System.out.println("👋 Uscita dal gioco...");
                     break;
@@ -77,6 +81,7 @@ public class Simulatore {
         System.out.println("4. Mostra edifici");
         System.out.println("5. Mostra statistiche avanzate");
         System.out.println("6. Ordina edifici per costo");
+        System.out.println("7. Ordina edifici per tipo");
         System.out.println("0. Esci");
         System.out.println("Inserisci la tua scelta: ");
     }
@@ -195,6 +200,28 @@ public class Simulatore {
         }
         System.out.println("Edifici ordinati per costo!");
     }
+
+    private int valoreTipo(Edificio e) {
+        if (e instanceof Casa) return 1;
+        if (e instanceof Fabbrica) return 2;
+        return 3;
+    }
+
+    private void ordinaPerTipo() {
+        ArrayList<Edificio> lista = citta.getEdifici();
+
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for (int j = i + 1; j < lista.size(); j++) {
+                if (valoreTipo(lista.get(i)) > valoreTipo(lista.get(j))) {
+                    Edificio temp = lista.get(i);
+                    lista.set(i, lista.get(j));
+                    lista.set(j, temp);
+                }
+            }
+        }
+        System.out.println("Edifici ordinati per tipo!");
+    }
+
 
 
 }
