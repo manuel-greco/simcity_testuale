@@ -47,6 +47,10 @@ public class Simulatore {
                     mostraEdifici();
                     break;
 
+                case 5:
+                    mostraStatisticheAvanzate();
+                    break;
+
                 case 0:
                     System.out.println("👋 Uscita dal gioco...");
                     break;
@@ -65,6 +69,7 @@ public class Simulatore {
         System.out.println("2. Visualizza città");
         System.out.println("3. Simula giorno");
         System.out.println("4. Mostra edifici");
+        System.out.println("5. Mostra statistiche avanzate");
         System.out.println("0. Esci");
         System.out.println("Inserisci la tua scelta: ");
     }
@@ -126,5 +131,35 @@ public class Simulatore {
         for (Edificio e : citta.getEdifici()){
             System.out.println(i +". " + e.getNome() + " Costo: " + e.getCosto() + i++);
         }
+    }
+
+    private void mostraStatisticheAvanzate(){
+        System.out.println("--- Statistiche Avanzate ---");
+        int caseCount = 0;
+        int fabbricheCount = 0;
+        int centraleCount = 0;
+
+        for (Edificio e : citta.getEdifici()){
+            if (e instanceof Casa) caseCount++;
+            else if (e instanceof Fabbrica) fabbricheCount++;
+            else if (e instanceof Centrale) centraleCount++;
+        }
+
+        System.out.println("Case: "+caseCount);
+        System.out.println("Fabbriche: "+fabbricheCount);
+        System.out.println("Centrali: "+centraleCount);
+
+        String comune = "Nessuno";
+
+        if (!citta.getEdifici().isEmpty()){
+            if (caseCount >= fabbricheCount && caseCount >= centraleCount){
+                comune = "Casa";
+            } else if (fabbricheCount >= caseCount && fabbricheCount >= centraleCount) {
+                comune = "Fabbrica";
+            } else {
+                comune = "Centrale";
+            }
+        }
+        System.out.println("Edificio più comune: " + comune);
     }
 }
