@@ -30,14 +30,31 @@ public class Citta {
     }
 
     // GETTER e SETTER
-    public int getPopolazione() { return popolazione; }
-    public void setPopolazione(int popolazione) { this.popolazione = popolazione; }
+    public int getPopolazione() {
+        return popolazione;
+    }
 
-    public int getSoldi() { return soldi; }
-    public void setSoldi(int soldi) { this.soldi = soldi; }
+    public void setPopolazione(int popolazione) {
+        if (popolazione > 500) popolazione = 500;
+        if (popolazione < 0) popolazione = 0;
+        this.popolazione = popolazione;
+    }
 
-    public int getEnergia() { return energia; }
-    public void setEnergia(int energia) { this.energia = energia; }
+    public int getSoldi() {
+        return soldi;
+    }
+    public void setSoldi(int soldi) {
+        if (soldi < 0) soldi = 0;
+        this.soldi = soldi;
+    }
+
+    public int getEnergia() {
+        return energia;
+    }
+    public void setEnergia(int energia) {
+        if (energia < 0) energia = 0;
+        this.energia = energia;
+    }
 
     public ArrayList<Edificio> getEdifici() {
         return edifici;
@@ -45,7 +62,7 @@ public class Citta {
 
     @Override
     public String toString() {
-        return "\n===== STATO CITTÀ =====\n" +
+        return "===== STATO CITTÀ =====\n" +
                 "Popolazione: " + popolazione + "\n" +
                 "Soldi: " + soldi + "\n" +
                 "Energia: " + energia + "\n" +

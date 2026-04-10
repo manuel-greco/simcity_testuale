@@ -61,7 +61,7 @@ public class Simulatore {
         }
     }
 
-    private void clear()  { for (int i = 0; i < 40; i++) System.out.println(); }
+    private void clear()  { for (int i = 0; i < 10; i++) System.out.println(); }
 
     private void mostraMenu(){
         System.out.println("===== SIM CITY =====");
@@ -99,6 +99,16 @@ public class Simulatore {
 
         if (edificio == null){
             System.out.println("Scelta non valida!");
+            return;
+        }
+
+        if (citta.getEnergia() < 10) {
+            System.out.println("⚠Non hai abbastanza energia per costruire!");
+            return;
+        }
+
+        if (citta.getEdifici().size() >= 50) {
+            System.out.println("Hai raggiunto il numero massimo di edifici!");
             return;
         }
 
@@ -162,4 +172,6 @@ public class Simulatore {
         }
         System.out.println("Edificio più comune: " + comune);
     }
+
+
 }
