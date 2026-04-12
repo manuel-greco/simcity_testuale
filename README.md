@@ -1,92 +1,76 @@
-# 🏙️ SimCity Testuale – Progetto OOP (Java)
+# 🏙️ SimCity BuildIt - Versione Java Terminale
 
-Un gestionale/simulatore ispirato a **SimCity**, interamente realizzato in Java e progettato per dimostrare in modo chiaro e completo i principi fondamentali della **Programmazione Orientata agli Oggetti (OOP)**.
+Un simulatore di città ispirato a SimCity BuildIt, giocabile da terminale.
 
-Il giocatore può costruire edifici, gestire risorse, far evolvere la città e affrontare eventi casuali che influenzano la partita.
+## 💡 L'Idea
 
----
+Ricreare le meccaniche base di SimCity BuildIt in Java. Non è una copia esatta del gioco originale, ma una simulazione.
 
-## 📌 Caratteristiche principali
+Il giocatore può costruire una città, gestire risorse, edifici e servizi, il tutto attraverso un'interfaccia testuale da terminale.
 
-### 🧱 Edifici con ereditarietà
-Gli edifici derivano tutti da una classe astratta:
+## 🎮 Cosa Puoi Fare
 
-- `Edificio` (astratta)
-  - `Casa` 🏠
-  - `Fabbrica` 🏭
-  - `Centrale` ⚡
+- Costruire edifici residenziali per aumentare la popolazione
+- Creare fabbriche per produrre materiali
+- Aprire negozi commerciali
+- Gestire servizi essenziali come energia e acqua
+- Amministrare risorse e materiali nei depositi
+- Monitorare le statistiche della tua città
 
-Ogni edificio implementa il metodo `effetto(Citta)` con comportamenti diversi → **polimorfismo reale**.
+## 🏗️ Tipi di Edifici
 
----
+**Residenziali** 🏠
+- Zone Residenziali, Case Accoglienti
 
-## 🧠 Interfacce
+**Industriali** 🏭
+- Fabbriche che producono materiali grezzi
 
-- **Produttore** → implementata da edifici che producono energia/soldi  
-- **Consumatore** → implementata da edifici che consumano risorse  
+**Commerciali** 🏪
+- Negozi che vendono oggetti lavorati
 
-Aumentano modularità e voto finale.
+**Servizi** ⚙️
+- Centrali elettriche (carbone, eolica)
+- Torri idriche
 
----
-
-## 🎲 Eventi casuali
-
-Il sistema simula ogni giorno la possibilità che accada un evento:
-
-- `Incendio` 🔥 → distruzione edifici / perdita popolazione
-- `BoomEconomico` 💰 → aumento soldi
-- `Blackout` ⚡ → perdita energia
-
-Tutti ereditano da:
-
-- `Evento` (classe astratta con probabilità + metodo `applica()`)
-
----
-
-## 🏛️ Struttura package
+## 📦 Struttura del Progetto
 
     src/
-    ├── model/
-    │   ├── Citta.java
-    │   ├── Edificio.java
-    │   ├── Casa.java
-    │   ├── Fabbrica.java
-    │   ├── Centrale.java
-    │   ├── Evento.java
-    │   ├── Incendio.java
-    │   ├── BoomEconomico.java
-    │   ├── Blackout.java
-    │   ├── Produttore.java
-    │   ├── Consumatore.java
-    │   └── TipoEdificio.java
+    ├── Main.java
     │
-    ├── service/
-    │   └── Simulatore.java
+    ├── Simulatore.java
     │
-    └── main/
-        └── Main.java
+    ├── Citta.java
+    │
+    ├── edifici/
+    │   ├── Edificio.java (abstract)
+    │   ├── commerciali/
+    │   │   ├── EdificioCommerciale.java (abstract)
+    │   │   ├── NegozioMaterialiDaCostruzione.java
+    │   │   └── NegozioDiFerramenta.java
+    │   ├── industriali/
+    │   │   ├── EdificioIndustriale.java (abstract)
+    │   │   ├── FabbricaPiccola.java
+    │   │   └── FabbricaBase.java
+    │   └── residenziali/
+    │       ├── EdificioResidenziale.java (abstract)
+    │       ├── ZonaResidenziale.java
+    │       └── CaseAccoglienti.java
+    │
+    ├── risorse/
+    │   ├── Risorse.java
+    │   ├── TipoRisorsa.java (enum)
+    │   ├── DepositoMateriali.java
+    │   └── DepositoCittadino.java
+    │
+    └── servizi/
+        ├── Servizio.java (abstract)
+        ├── energia/
+        │   ├── CentraleCarbone.java
+        │   └── CentraleEolica.java
+        └── acqua/
+            └── TorreIdricaBase.java
+## 🛠️ Tecnologie
 
----
-
-## 🎮 Menu di gioco
-
-===== SIM CITY =====
-
-    Costruisci edificio
-    Visualizza città
-    Simula giorno
-    Statistiche
-    Demolisci edificio
-    Esci
-
----
-
-## ⚙️ Logica di simulazione
-
-Ogni giorno:
-
-1. Ogni edificio applica il suo effetto
-2. I consumi vengono detratti
-3. Gli eventi vengono verificati
-4. La città aggiorna felicità, inquinamento e risorse 
-5. Il giorno avanza
+- OOP: ereditarietà, polimorfismo, astrazione
+- HashMap per gestire le risorse
+- Enum per evitare errori nei nomi delle risorse

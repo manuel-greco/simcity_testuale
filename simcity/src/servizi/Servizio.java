@@ -1,4 +1,4 @@
-package edifici.servizi;
+package servizi;
 
-public class Servizio {
+public abstract class Servizio {
 }

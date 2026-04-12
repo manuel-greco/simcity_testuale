@@ -1,12 +1,10 @@
-package service;
-
-import model.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Simulatore {
 
+
+    /*
     private Citta citta;
     private Scanner scanner;
 
@@ -247,4 +245,5 @@ public class Simulatore {
         else if (inq < 80) System.out.println("Aria inquinata");
         else System.out.println("Aria pericolosa!");
     }
+     */
 }

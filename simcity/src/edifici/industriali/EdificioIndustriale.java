@@ -1,4 +1,6 @@
 package edifici.industriali;
 
-public class EdificioIndustriale {
+import edifici.Edificio;
+
+public abstract class EdificioIndustriale extends Edificio {
 }
