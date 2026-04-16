@@ -1,94 +1,172 @@
-import java.util.ArrayList;
+import edifici.residenziali.CaseAccoglienti;
+import edifici.residenziali.ZonaResidenziale;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Simulatore {
-    /**
-     * Costruttore: inizializzo citta
-     */
+    Scanner sc = new Scanner(System.in);
 
-    /*
     private Citta citta;
-    private Scanner scanner;
 
     public Simulatore() {
         citta = new Citta();
-        scanner = new Scanner(System.in);
     }
 
     public void avvia() {
-
+        System.out.println("==========Benvenuto su SimCity==========");
         int scelta = -1;
-
         while (scelta != 0) {
-
-            clear();
-            mostraMenu();
-
+            menuPrincipale();
             try {
-                scelta = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Input non valido!");
+                scelta = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Errore! Input non valido!");
+                sc.nextLine();
                 continue;
             }
-
             switch (scelta) {
-                case 1:
-                    costruisciEdificio();
-                    break;
-
-                case 2:
-                    System.out.println(citta);
-                    break;
-
-                case 3:
-                    citta.simulaGiorno();
-                    System.out.println("Giorno simulato!");
-                    break;
-
-                case 4:
-                    mostraEdifici();
-                    break;
-
-                case 5:
-                    mostraStatisticheAvanzate();
-                    break;
-
-                case 6:
-                    ordinaPercosto();
-                    break;
-
-                case 7:
-                    ordinaPerTipo();
-                    break;
-
-                case 8:
-                    mostraQualitaAria();
-                    break;
-
                 case 0:
-                    System.out.println("👋 Uscita dal gioco...");
                     break;
-
+                case 1:
+                    menuCostruisci();
+                    try {
+                        scelta = sc.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Errore! Input non valido!");
+                        sc.nextLine();
+                        continue;
+                    }
+                    switch (scelta) {
+                        case 1:
+                            menuEdificiResidenziali();
+                            try {
+                                scelta = sc.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println("Errore! Input non valido!");
+                                sc.nextLine();
+                                continue;
+                            }
+                            switch (scelta) {
+                                case 1:
+                                    ZonaResidenziale residenziale = new ZonaResidenziale();
+                                    residenziale.stampaMexCostruito();
+                                    break;
+                                case 2:
+                                    CaseAccoglienti caseAccoglienti = new CaseAccoglienti();
+                                    caseAccoglienti.stampaMexCostruito();
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            menuEdificiIndustriali();
+                            try {
+                                scelta = sc.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println("Errore! Input non valido!");
+                                sc.nextLine();
+                                continue;
+                            }
+                            switch (scelta) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            menuEdificiCommerciali();
+                            try {
+                                scelta = sc.nextInt();
+                            } catch (InputMismatchException e) {
+                                System.out.println("Errore! Input non valido!");
+                                sc.nextLine();
+                                continue;
+                            }
+                            switch (scelta) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+                case 2:
+                    mostraCitta();
+                    break;
+                case 3:
+                    mostraRisorse();
+                    break;
+                case 4:
+                    giorno += 1;
+                    // + eventuali controlli di servizi
+                    break;
                 default:
                     System.out.println("Scelta non valida!");
+                    break;
             }
         }
     }
 
-    private void clear()  { for (int i = 0; i < 10; i++) System.out.println(); }
+    private void menuPrincipale(){
+        System.out.println("===== Menu Principale =====");
+        System.out.println("0. Esci");
+        System.out.println("1. Costruisci");
+        System.out.println("2. Mostra città");
+        System.out.println("3. Visualizza risorse");
+        System.out.println("4. Simula giorno");
+        System.out.print("Inserisci la tua scelta: ");
+    }
 
+    private void menuCostruisci() {
+        System.out.println("===== Menu Edifici =====");
+        System.out.println("1. Costruisci edificio residenziale");
+        System.out.println("2. Costruisci edificio industriale");
+        System.out.println("3. Costruisci edificio commerciale");
+        System.out.print("Scelta: ");
+    }
+
+    private void menuEdificiResidenziali() {
+        System.out.println("===== Edifici Residenziali =====");
+        System.out.println("1. Zona Residenziale (* ..., * ..., * ...)");
+        System.out.println("2. Case Accoglienti (* ..., * ..., * ...)");
+        System.out.print("Scelta: ");
+    }
+
+    private void menuEdificiIndustriali() {
+        System.out.println("===== Edifici Industriali =====");
+        System.out.println("1. Fabbrica Piccola (* ..., * ..., * ...)");
+        System.out.println("2. Fabbrica Base (* ..., * ..., * ...)");
+        System.out.print("Scelta: ");
+    }
+
+    private void menuEdificiCommerciali() {
+        System.out.println("===== Edifici Commerciali =====");
+        System.out.println("1. Neg. Materiali da Costruzione (* ..., * ..., * ...)");
+        System.out.println("2. Neg. Ferramenta (* ..., * ..., * ...)");
+        System.out.print("Scelta: ");
+    }
+}
+
+    /*
     private void mostraMenu(){
         System.out.println("===== SIM CITY =====");
-        System.out.println("1. Costruisci edificio");
+
         System.out.println("2. Visualizza città");
-        System.out.println("3. Simula giorno");
+
         System.out.println("4. Mostra edifici");
         System.out.println("5. Mostra statistiche avanzate");
         System.out.println("6. Ordina edifici per costo");
         System.out.println("7. Ordina edifici per tipo");
         System.out.println("8. Mostra qualità dell’aria");
-        System.out.println("0. Esci");
-        System.out.println("Inserisci la tua scelta: ");
+
     }
 
     private void costruisciEdificio(){
@@ -248,4 +326,3 @@ public class Simulatore {
         else System.out.println("Aria pericolosa!");
     }
      */
-}

@@ -1,25 +1,24 @@
+import edifici.commerciali.EdificioCommerciale;
+import edifici.industriali.EdificioIndustriale;
+import edifici.residenziali.EdificioResidenziale;
+import risorse.Risorse;
+
 import java.util.ArrayList;
 
 public class Citta {
-    /**
-     * Costruttore: inizializzare risorse, ArrayList di edifici (specifici per ogni package).
-     */
-
-    /*
-    private int energia;
-    private int felicita = 50;
-    private int crescitaGiornaliera = 1;
-    private int inquinamento = 0;
-
-
-    private ArrayList<Edificio> edifici;
+    private Risorse risorse;
+    private ArrayList<EdificioResidenziale> edificiResidenziali;
+    private ArrayList<EdificioIndustriale> edificiIndustriali;
+    private ArrayList<EdificioCommerciale> edificiCommerciali;
 
     public Citta() {
-        this.popolazione = 10;
-        this.soldi = 500;
-        this.energia = 100;
-        this.edifici = new ArrayList<>();
+        this.risorse = new Risorse();
+        this.edificiResidenziali = new ArrayList<>();
+        this.edificiIndustriali = new ArrayList<>();
+        this.edificiCommerciali = new ArrayList<>();
     }
+
+    /*
 
     public void aggiungiEdificio(Edificio e) {
         edifici.add(e);

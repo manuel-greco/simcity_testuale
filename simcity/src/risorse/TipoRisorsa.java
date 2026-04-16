@@ -1,9 +1,5 @@
 package risorse;
 
-/**
- * Enum che rappresenta i tipi di risorse disponibili nel gioco.
- * Utilizzato per gestire in modo type-safe le risorse della città.
- */
 public enum TipoRisorsa {
     // Risorsa principale
     DENARO,
