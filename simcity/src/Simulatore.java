@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Simulatore {
-
+    /**
+     * Costruttore: inizializzo citta
+     */
 
     /*
     private Citta citta;

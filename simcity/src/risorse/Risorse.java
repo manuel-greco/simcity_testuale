@@ -86,22 +86,22 @@ public class Risorse {
         System.out.println("║         RISORSE CITTÀ          ║");
         System.out.println("╚════════════════════════════════╝");
 
-        System.out.println("\n💰 DENARO: " + risorse.get(TipoRisorsa.DENARO));
-        System.out.println("👥 POPOLAZIONE: " + risorse.get(TipoRisorsa.POPOLAZIONE));
+        System.out.println("\n- DENARO: " + risorse.get(TipoRisorsa.DENARO));
+        System.out.println("- POPOLAZIONE: " + risorse.get(TipoRisorsa.POPOLAZIONE));
 
-        System.out.println("\n⚡ Servizi:");
-        System.out.println("  ⚡  Energia: " + risorse.get(TipoRisorsa.ENERGIA));
-        System.out.println("  💧 Acqua: " + risorse.get(TipoRisorsa.ACQUA));
+        System.out.println("\n- Servizi:");
+        System.out.println("\tEnergia: " + risorse.get(TipoRisorsa.ENERGIA));
+        System.out.println("\tAcqua: " + risorse.get(TipoRisorsa.ACQUA));
 
-        System.out.println("\n🌳 Materiali GREZZI:");
-        System.out.println("  🪵  Legno: " + risorse.get(TipoRisorsa.LEGNO));
-        System.out.println("  ⚙️  Metallo: " + risorse.get(TipoRisorsa.METALLO));
+        System.out.println("\n- Materiali GREZZI:");
+        System.out.println("\tLegno: " + risorse.get(TipoRisorsa.LEGNO));
+        System.out.println("\tMetallo: " + risorse.get(TipoRisorsa.METALLO));
 
-        System.out.println("\n🔨 Materiali LAVORATI:");
-        System.out.println("  📌 Chiodi: " + risorse.get(TipoRisorsa.CHIODI));
-        System.out.println("  🪚 Assi: " + risorse.get(TipoRisorsa.ASSI));
-        System.out.println("  🔨 Martello: " + risorse.get(TipoRisorsa.MARTELLO));
-        System.out.println("  📦 Nastro: " + risorse.get(TipoRisorsa.NASTRO));
+        System.out.println("\n- Materiali LAVORATI:");
+        System.out.println("\tChiodi: " + risorse.get(TipoRisorsa.CHIODI));
+        System.out.println("\tAssi: " + risorse.get(TipoRisorsa.ASSI));
+        System.out.println("\tMartello: " + risorse.get(TipoRisorsa.MARTELLO));
+        System.out.println("\tNastro: " + risorse.get(TipoRisorsa.NASTRO));
         System.out.println();
     }
 }

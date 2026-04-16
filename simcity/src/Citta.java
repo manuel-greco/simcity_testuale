@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 public class Citta {
-
+    /**
+     * Costruttore: inizializzare risorse, ArrayList di edifici (specifici per ogni package).
+     */
 
     /*
     private int energia;
