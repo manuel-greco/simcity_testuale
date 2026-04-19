@@ -1,33 +1,24 @@
 package edifici;
 
-import risorse.TipoRisorsa;
-import java.util.HashMap;
-
 public abstract class Edificio {
     protected String nome;
-    protected HashMap<TipoRisorsa, Integer> costoCostruzione;
+    protected int costo;
 
-    public Edificio(String nome) {
+    public Edificio(String nome, int costo) {
         this.nome = nome;
-        this.costoCostruzione = new HashMap<>();
+        this.costo = costo;
     }
 
-    protected void aggiungiCosto(TipoRisorsa risorsa, int quantita) {
-        costoCostruzione.put(risorsa, quantita);
+    public String getNome() {
+        return nome;
     }
 
-    public abstract void stampaMexCostruito();
-
-    public abstract String getInfo();
-
-    public HashMap<TipoRisorsa, Integer> getCostoCostruzione() {
-        return costoCostruzione;
+    public int getCosto() {
+        return costo;
     }
 
-    public void mostraCosti() {
-        System.out.println("Costi per " + nome + ":");
-        for (TipoRisorsa risorsa : costoCostruzione.keySet()) {
-            System.out.println("  - " + risorsa + ": " + costoCostruzione.get(risorsa));
-        }
+    @Override
+    public String toString() {
+        return nome + "| Costo: " + costo;
     }
 }

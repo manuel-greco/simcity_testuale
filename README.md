@@ -56,12 +56,6 @@ Il giocatore può costruire una città, gestire risorse, edifici e servizi, il t
     │       ├── ZonaResidenziale.java
     │       └── CaseAccoglienti.java
     │
-    ├── risorse/
-    │   ├── Risorse.java
-    │   ├── TipoRisorsa.java (enum)
-    │   ├── DepositoMateriali.java
-    │   └── DepositoCittadino.java
-    │
     └── servizi/
         ├── Servizio.java (abstract)
         ├── energia/
@@ -69,8 +63,3 @@ Il giocatore può costruire una città, gestire risorse, edifici e servizi, il t
         │   └── CentraleEolica.java
         └── acqua/
             └── TorreIdricaBase.java
-## 🛠️ Tecnologie
-
-- OOP: ereditarietà, polimorfismo, astrazione
-- HashMap per gestire le risorse
-- Enum per evitare errori nei nomi delle risorse

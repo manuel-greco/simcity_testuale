@@ -3,25 +3,19 @@ package edifici.residenziali;
 import edifici.Edificio;
 
 public abstract class EdificioResidenziale extends Edificio {
-    protected int capacitaAbitanti;
+    protected int abitanti;
 
-    public EdificioResidenziale(String nome, int capacitaAbitanti) {
-        super(nome);
-        this.capacitaAbitanti = capacitaAbitanti;
+    public EdificioResidenziale(String nome, int costo, int abitanti) {
+        super(nome, costo);
+        this.abitanti = abitanti;
     }
 
-    public int getCapacitaAbitanti() {
-        return capacitaAbitanti;
-    }
-
-    @Override
-    public String getInfo() {
-        return nome + " - Capacità: " + capacitaAbitanti + " abitanti";
+    public int getAbitanti() {
+        return abitanti;
     }
 
     @Override
-    public void stampaMexCostruito() {
-        System.out.println("Costruzione di " + nome + " completata!");
-        System.out.println("Può ospitare fino a " + capacitaAbitanti + " abitanti.");
+    public String toString() {
+        return nome + "| Costo: " + costo + "| Abitanti: " + abitanti;
     }
 }
