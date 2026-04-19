@@ -128,14 +128,21 @@ public class Simulatore {
         citta.mostraCitta();
     }
 
-    protected void mostraStatistiche() {
-        System.out.println("\n========== Statistiche Città ==========");
-        System.out.println("Denaro: " + citta.getDenaro());
-        System.out.println("Popolazione: " + citta.getPopolazione());
-        System.out.println("Felicità: " + citta.getFelicita() + "%");
-        System.out.println("Inquinamento: " + citta.getInquinamento());
-        System.out.println("Energia: " + citta.getEnergia());
-        System.out.println("Acqua: " + citta.getAcqua());
+    protected void opzioneStatistiche() {
+        mostraStatisticheBase();
+        System.out.println("0. Esci | 1. Statistiche avanzate");
+        int scelta = -1;
+        do {
+            try {
+                System.out.println("Scelta: ");
+                scelta = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Errore! Input non valido!");
+                sc.nextLine();
+            }
+        } while (scelta != 0 && scelta != 1);
+        if (scelta == 0) return;
+        mostraStatisticheAvanzate();
     }
 
     protected void simulaGiorno() {
@@ -173,6 +180,20 @@ public class Simulatore {
         System.out.println("2. Neg. Ferramenta (-700$, +60$/d, +8 fel.)");
         System.out.print("Costruisci: ");
     }
+
+    private void mostraStatisticheBase() {
+        System.out.println("\n========== Statistiche Base ==========");
+        System.out.println("Denaro: " + citta.getDenaro());
+        System.out.println("Popolazione: " + citta.getPopolazione());
+        System.out.println("Felicità: " + citta.getFelicita() + "%");
+        System.out.println("Inquinamento: " + citta.getInquinamento());
+        System.out.println("Energia: " + citta.getEnergia());
+        System.out.println("Acqua: " + citta.getAcqua());
+    }
+
+    private void mostraStatisticheAvanzate(){
+        System.out.println("\n========== Statistiche Avanzate ==========");
+    }
 }
 
     /*
@@ -187,37 +208,6 @@ public class Simulatore {
         System.out.println("7. Ordina edifici per tipo");
         System.out.println("8. Mostra qualità dell’aria");
 
-    }
-
-    private void mostraStatisticheAvanzate(){
-        System.out.println("--- Statistiche Avanzate ---");
-        int caseCount = 0;
-        int fabbricheCount = 0;
-        int centraleCount = 0;
-
-        for (Edificio e : citta.getEdifici()){
-            if (e instanceof Casa) caseCount++;
-            else if (e instanceof Fabbrica) fabbricheCount++;
-            else if (e instanceof Centrale) centraleCount++;
-        }
-
-        System.out.println("Case: "+caseCount);
-        System.out.println("Fabbriche: "+fabbricheCount);
-        System.out.println("Centrali: "+centraleCount);
-
-        String comune = "Nessuno";
-
-        if (!citta.getEdifici().isEmpty()){
-            if (caseCount >= fabbricheCount && caseCount >= centraleCount){
-                comune = "Casa";
-            } else if (fabbricheCount >= caseCount && fabbricheCount >= centraleCount) {
-                comune = "Fabbrica";
-            } else {
-                comune = "Centrale";
-            }
-        }
-        System.out.println("Edificio più comune: " + comune);
-        System.out.println("Inquinamento: " + citta.getInquinamento() + "/100");
     }
 
     private void ordinaPercosto(){

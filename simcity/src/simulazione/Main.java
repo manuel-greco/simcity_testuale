@@ -30,7 +30,7 @@ public class Main {
                 s.mostraCitta();
                 break;
             case 3:
-                s.mostraStatistiche();
+                s.opzioneStatistiche();
                 break;
             case 4:
                 s.simulaGiorno();
