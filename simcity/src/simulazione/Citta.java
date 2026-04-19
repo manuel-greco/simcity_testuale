@@ -135,4 +135,16 @@ public class Citta {
     public int getAcqua() {
         return acqua;
     }
+
+    public ArrayList<EdificioResidenziale> getEdificiResidenziali() {
+        return edificiResidenziali;
+    }
+
+    public ArrayList<EdificioIndustriale> getEdificiIndustriali() {
+        return edificiIndustriali;
+    }
+
+    public ArrayList<EdificioCommerciale> getEdificiCommerciali() {
+        return edificiCommerciali;
+    }
 }
