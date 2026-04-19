@@ -1,5 +1,6 @@
 package simulazione;
 
+import edifici.Edificio;
 import edifici.commerciali.EdificioCommerciale;
 import edifici.industriali.EdificioIndustriale;
 import edifici.residenziali.EdificioResidenziale;
@@ -63,6 +64,7 @@ public class Citta {
     public void mostraCitta() {
         System.out.println("\n============ Edifici Città ============");
 
+        ordinaPerCosto(edificiResidenziali);
         System.out.println("\n--- Edifici Residenziali ---");
         if (edificiResidenziali.isEmpty()) {
             System.out.println("Nessun edificio residenziale");
@@ -72,6 +74,7 @@ public class Citta {
             }
         }
 
+        ordinaPerCosto(edificiIndustriali);
         System.out.println("\n--- Edifici Industriali ---");
         if (edificiIndustriali.isEmpty()) {
             System.out.println("Nessun edificio industriale");
@@ -81,6 +84,7 @@ public class Citta {
             }
         }
 
+        ordinaPerCosto(edificiCommerciali);
         System.out.println("\n--- Edifici Commerciali ---");
         if (edificiCommerciali.isEmpty()) {
             System.out.println("Nessun edificio commerciale");
@@ -146,5 +150,18 @@ public class Citta {
 
     public ArrayList<EdificioCommerciale> getEdificiCommerciali() {
         return edificiCommerciali;
+    }
+
+    // metodi privati
+    private <T extends Edificio> void ordinaPerCosto(ArrayList<T> edifici) {
+        for (int i = 0; i < edifici.size() - 1; i++) {
+            for (int j = i + 1; j < edifici.size(); j++) {
+                if (edifici.get(i).getCosto() > edifici.get(j).getCosto()) {
+                    T scambio = edifici.get(i);
+                    edifici.set(i, edifici.get(j));
+                    edifici.set(j, scambio);
+                }
+            }
+        }
     }
 }

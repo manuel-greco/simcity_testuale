@@ -199,7 +199,6 @@ public class Simulatore {
 
         mostraQualitaAria();
     }
-
     private void mostraQualitaAria() {
         int inq = citta.getInquinamento();
 
@@ -212,43 +211,3 @@ public class Simulatore {
         else System.out.println("Aria pericolosa!");
     }
 }
-
-    /*
-
-    private void ordinaPercosto(){
-        ArrayList<Edificio> lista = citta.getEdifici();
-
-        for (int i = 0; i < lista.size() -1; i++) {
-            for (int j = i + 1; j < lista.size(); j++) {
-                if (lista.get(i).getCosto() > lista.get(j).getCosto()){
-                    Edificio scambio = lista.get(i);
-                    lista.set(i, lista.get(j));
-                    lista.set(j, scambio);
-                }
-
-            }
-        }
-        System.out.println("Edifici ordinati per costo!");
-    }
-
-    private int valoreTipo(Edificio e) {
-        if (e instanceof Casa) return 1;
-        if (e instanceof Fabbrica) return 2;
-        return 3;
-    }
-
-    private void ordinaPerTipo() {
-        ArrayList<Edificio> lista = citta.getEdifici();
-
-        for (int i = 0; i < lista.size() - 1; i++) {
-            for (int j = i + 1; j < lista.size(); j++) {
-                if (valoreTipo(lista.get(i)) > valoreTipo(lista.get(j))) {
-                    Edificio temp = lista.get(i);
-                    lista.set(i, lista.get(j));
-                    lista.set(j, temp);
-                }
-            }
-        }
-        System.out.println("Edifici ordinati per tipo!");
-    }
-     */
