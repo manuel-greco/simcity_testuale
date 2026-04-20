@@ -1,4 +1,9 @@
 package servizi.acqua;
 
-public class TorreIdricaBase {
+import servizi.Servizio;
+
+public class TorreIdricaBase extends Servizio {
+    public TorreIdricaBase() {
+        super("Torre Idrica Base", 1500, 120);
+    }
 }

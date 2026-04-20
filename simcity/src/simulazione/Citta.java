@@ -4,6 +4,7 @@ import edifici.Edificio;
 import edifici.commerciali.EdificioCommerciale;
 import edifici.industriali.EdificioIndustriale;
 import edifici.residenziali.EdificioResidenziale;
+import servizi.Servizio;
 
 import java.util.ArrayList;
 
@@ -12,8 +13,6 @@ public class Citta {
     private int popolazione;
     private int felicita;
     private int inquinamento;
-    private int energia;
-    private int acqua;
     private ArrayList<EdificioResidenziale> edificiResidenziali;
     private ArrayList<EdificioIndustriale> edificiIndustriali;
     private ArrayList<EdificioCommerciale> edificiCommerciali;
@@ -23,8 +22,6 @@ public class Citta {
         this.popolazione = 0;
         this.felicita = 50;
         this.inquinamento = 0;
-        this.energia = 0;
-        this.acqua = 0;
         this.edificiResidenziali = new ArrayList<>();
         this.edificiIndustriali = new ArrayList<>();
         this.edificiCommerciali = new ArrayList<>();
@@ -45,10 +42,25 @@ public class Citta {
             edificiIndustriali.add(e);
             denaro -= e.getCosto();
             inquinamento += e.getInquinamento();
-            energia -= e.getConsumoEnergia();
         } else {
             throw new DenaroInsufficiente("Denaro Insufficiente!");
         }
+    }
+
+    private int consumoEnergiaTotale() {
+        int tot = 0;
+        for (EdificioIndustriale ei : edificiIndustriali) {
+            tot += ei.getConsumoEnergia();
+        }
+        return tot;
+    }
+
+    private int consumoAcquaTotale() {
+        int tot = 0;
+        for (EdificioResidenziale er : edificiResidenziali) {
+            tot += er.getAbitanti(); // 1 acqua per abitante
+        }
+        return tot;
     }
 
     public void aggiungiEdificioCommerciale(EdificioCommerciale ec) {
@@ -111,8 +123,12 @@ public class Citta {
 
         if (felicita < 40) throw new FelicitaBassa("Felicità abitanti bassa!");
 
-        if (energia < 0) throw new EnergiaInsufficiente("Energia Insufficiente!");
-        if (acqua < 0) throw new EnergiaInsufficiente("Energia Insufficiente!");
+        if (getEnergia() < consumoEnergiaTotale())
+            throw new EnergiaInsufficiente("Energia insufficiente!");
+
+        if (getAcqua() < consumoAcquaTotale())
+            throw new AcquaInsufficiente("Acqua insufficiente!");
+
     }
 
     // getter
@@ -130,14 +146,6 @@ public class Citta {
 
     public int getInquinamento() {
         return inquinamento;
-    }
-
-    public int getEnergia() {
-        return energia;
-    }
-
-    public int getAcqua() {
-        return acqua;
     }
 
     public ArrayList<EdificioResidenziale> getEdificiResidenziali() {
@@ -164,4 +172,37 @@ public class Citta {
             }
         }
     }
+
+    //Servizi
+    private ArrayList<Servizio> servizi = new ArrayList<>();
+
+    public void aggiungiServizio(Servizio s) throws DenaroInsufficiente {
+        if (denaro < s.getCosto())
+            throw new DenaroInsufficiente("Denaro insufficiente!");
+        denaro -= s.getCosto();
+        servizi.add(s);
+    }
+
+
+    public int getEnergia() {
+        int tot = 0;
+        for (Servizio s : servizi) {
+            if (s instanceof servizi.energia.CentraleCarbone ||
+                    s instanceof servizi.energia.CentraleEolica) {
+                tot += s.getCapacita();
+            }
+        }
+        return tot;
+    }
+
+    public int getAcqua() {
+        int tot = 0;
+        for (Servizio s : servizi) {
+            if (s instanceof servizi.acqua.TorreIdricaBase) {
+                tot += s.getCapacita();
+            }
+        }
+        return tot;
+    }
+
 }

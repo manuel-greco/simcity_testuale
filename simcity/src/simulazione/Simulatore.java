@@ -3,6 +3,9 @@ package simulazione;
 import edifici.commerciali.*;
 import edifici.industriali.*;
 import edifici.residenziali.*;
+import servizi.*;
+import servizi.energia.*;
+import servizi.acqua.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -31,6 +34,7 @@ public class Simulatore {
         System.out.println("1. Costruisci edificio residenziale");
         System.out.println("2. Costruisci edificio industriale");
         System.out.println("3. Costruisci edificio commerciale");
+        System.out.println("4. Costruisci servizio");
         System.out.print("Costruisci: ");
     }
 
@@ -66,9 +70,10 @@ public class Simulatore {
                 try {
                     citta.aggiungiEdificioResidenziale(er);
                 } catch (DenaroInsufficiente e) {
-                    System.out.println("Edificio non costruito! " + e);
+                    System.out.println("Edificio non costruito! " + e.getMessage());
                 }
                 break;
+
             case 2:
                 menuEdificiIndustriali();
                 try {
@@ -92,9 +97,10 @@ public class Simulatore {
                 try {
                     citta.aggiungiEdificioIndustriale(ei);
                 } catch (DenaroInsufficiente e) {
-                    System.out.println("Edificio non costruito! " + e);
+                    System.out.println("Edificio non costruito! " + e.getMessage());
                 }
                 break;
+
             case 3:
                 menuEdificiCommerciali();
                 try {
@@ -118,7 +124,37 @@ public class Simulatore {
                 try {
                     citta.aggiungiEdificioCommerciale(ec);
                 } catch (DenaroInsufficiente e) {
-                    System.out.println("Edificio non costruito! " + e);
+                    System.out.println("Edificio non costruito! " + e.getMessage());
+                }
+                break;
+
+            case 4:
+                menuServizi();
+                try {
+                    scelta = sc.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Errore! Input non valido!");
+                    sc.nextLine();
+                }
+                Servizio s;
+                switch (scelta) {
+                    case 1:
+                        s = new CentraleCarbone();
+                        break;
+                    case 2:
+                        s = new CentraleEolica();
+                        break;
+                    case 3:
+                        s = new TorreIdricaBase();
+                        break;
+                    default:
+                        System.out.println("Opzione non valida!");
+                        return;
+                }
+                try {
+                    citta.aggiungiServizio(s);
+                } catch (DenaroInsufficiente e) {
+                    System.out.println("Servizio non costruito! " + e.getMessage());
                 }
                 break;
         }
@@ -134,7 +170,7 @@ public class Simulatore {
         int scelta = -1;
         do {
             try {
-                System.out.println("Scelta: ");
+                System.out.print("Scelta: ");
                 scelta = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Errore! Input non valido!");
@@ -148,14 +184,15 @@ public class Simulatore {
     protected void simulaGiorno() {
         try {
             citta.controlliGiornata();
+            System.out.println("Giorno simulato con successo!");
         } catch (InquinamentoEccessivo e) {
-            System.out.println("Felicità abitanti a rischio! " + e);
+            System.out.println("Felicità abitanti a rischio! " + e.getMessage());
         } catch (FelicitaBassa e) {
-            System.out.println("Gli abitanti stanno scappando! " + e);
+            System.out.println("Gli abitanti stanno scappando! " + e.getMessage());
         } catch (EnergiaInsufficiente e) {
-            System.out.println("Fabbriche a rischio! " + e);
+            System.out.println("Fabbriche a rischio! " + e.getMessage());
         } catch (AcquaInsufficiente e) {
-            System.out.println("Abitazioni a rischio! " + e);
+            System.out.println("Abitazioni a rischio! " + e.getMessage());
         }
     }
 
@@ -199,6 +236,7 @@ public class Simulatore {
 
         mostraQualitaAria();
     }
+
     private void mostraQualitaAria() {
         int inq = citta.getInquinamento();
 
@@ -209,5 +247,13 @@ public class Simulatore {
         else if (inq < 60) System.out.println("Qualità accettabile");
         else if (inq < 80) System.out.println("Aria inquinata");
         else System.out.println("Aria pericolosa!");
+    }
+
+    private void menuServizi() {
+        System.out.println("_____----==] Servizi [==----_____");
+        System.out.println("1. Centrale a Carbone (-3000$, +200 energia)");
+        System.out.println("2. Centrale Eolica (-2000$, +80 energia)");
+        System.out.println("3. Torre Idrica Base (-1500$, +120 acqua)");
+        System.out.print("Costruisci: ");
     }
 }

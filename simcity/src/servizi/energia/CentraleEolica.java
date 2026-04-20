@@ -1,4 +1,9 @@
 package servizi.energia;
 
-public class CentraleEolica {
+import servizi.Servizio;
+
+public class CentraleEolica extends Servizio {
+    public CentraleEolica() {
+        super("Centrale Eolica", 2000, 80);
+    }
 }
